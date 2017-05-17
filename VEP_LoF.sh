@@ -6,7 +6,7 @@ HUMAN_ANCESTOR_FA="/users/nsabell/software/ensembl-tools-release-86/scripts/vari
 PERL_LIB="/users/nsabell/software/perl:$PERL5LIB"
 
 # Remove older VEP annotations from ExAC
-gunzip -c /users/nsabell/data_shared/ExAC/release0.3/ExAC.r0.3.sites.vep.vcf.gz | sed 's/CSQ=.*//' | sed 's/##INFO=<ID=CSQ.*\n//' | gzip > /users/nsabell/sardinia/ExAC.r0.3.sites.noVEP.vcf.gz &
+gunzip -c /users/nsabell/data_shared/ExAC/release0.3/ExAC.r0.3.sites.vep.vcf.gz | grep -v -P "##LoF|##VEP|##INFO=<ID=CSQ" | sed 's/CSQ=.*//' | gzip > /users/nsabell/sardinia/ExAC.r0.3.sites.noVEP.vcf.gz
 
 # Command formatting
 OUTDIR="/users/nsabell/sardinia/vep_lof_2120"
